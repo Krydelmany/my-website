@@ -20,6 +20,7 @@ body{
 }
 #header h1{
     font-size: 35px;
+    cursor: default;
 }
 .container{
     padding: 10px 10% ;
