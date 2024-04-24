@@ -1,0 +1,33 @@
+# Ignore system directories
+.VirtualBox/
+.android/
+.arduinoIDE/
+.cache/
+.cargo/
+.codeium/
+.crossnote/
+.dotnet/
+.ipython/
+.matplotlib/
+.platformio/
+.rustup/
+.vivaldi_reporting_data/
+.vscode/
+3D Objects/
+AppData/
+Contacts/
+Desktop/
+Documents/Meus Vídeos/
+Documents/Minhas Imagens/
+Documents/Minhas Músicas/
+Downloads/
+Favorites/
+Links/
+Music/
+OneDrive/
+Pictures/
+Recorded Calls/
+Saved Games/
+Searches/
+Videos/
+VirtualBox VMs/
