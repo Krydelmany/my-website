@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv= "X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giovani Claro Moraes - Home</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/37079d54a1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 <div id="header">
@@ -20,12 +21,13 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <i class="fas fa-solid fa-times" onclick="closemenu()"></i>
+                <div class="lang-button" onclick="toggleLanguage()" style="background-image: url('images/flag-en.png');"></div>
             </ul>
             <i class="fas a-solid fa-bars" onclick="openmenu()"></i>
         </nav>
-        <div class="header-text">
-            <p>Computer Engineer</p>
-            <h1>Hi, I'm <span>Giovani</span><br> From Birigui/SP</h1>
+        <div class="header-text animate__animated animate__fadeIn">
+            <p id="header-role">Computer Engineer</p>
+            <h1 id="header-intro">Hi, I'm <span>Giovani</span><br> From Birigui/SP</h1>
         </div>
     </div>
 </div>
@@ -34,11 +36,11 @@
     <div class="container">
         <div class="row">
             <div class="about-col-1">
-                <img src="images/my-person.jpg">
+                <img src="images/my-person.jpg" alt="Giovani Claro Moraes">
             </div>
             <div class="about-col-2">
-                <h1 class="sub-title">About Me</h1>
-                <p>Backend Developer with expertise in C/C++, currently expanding skills in Python, HTML, CSS, and JavaScript. I have acquired one year of experience in PL/SQL, deepening my knowledge in Oracle databases. My eagerness to learn extends to Java, Assembly, and Reverse Engineering. Passionate about Astronomy, Movies, and TV series (especially sitcoms).</p>
+                <h1 class="sub-title" id="about-title">About Me</h1>
+                <p id="about-desc">Backend Developer with expertise in C/C++, currently expanding skills in Python, HTML, CSS, and JavaScript. I have acquired one year of experience in PL/SQL, deepening my knowledge in Oracle databases. My eagerness to learn extends to Java, Assembly, and Reverse Engineering. Passionate about Astronomy, Movies, and TV series (especially sitcoms).</p>
 
                 <div class="tab-titles">
                     <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
@@ -50,7 +52,7 @@
                         <li><span>Back End</span><br>C++ | Python</li>
                         <li><span>Front End</span><br>HTML | CSS | JavaScript</li>
                         <li><span>Data Structure</span><br>PL/SQL</li>
-                        <a href="#contact"  class="btn btn3">Download Curriculum</a>
+                        <a href="#contact" class="btn btn3">Download Curriculum</a>
                     </ul>
                 </div>
                 <div class="tab-contents" id="experience">
@@ -58,7 +60,7 @@
                         <li><span>TI</span><br>Pampili</li>
                         <li><span>Assistant</span><br>Sedecti</li>
                         <li><span>Student</span><br>Alura</li>
-                        <a href="#contact"  class="btn btn3">Download Curriculum</a>
+                        <a href="#contact" class="btn btn3">Download Curriculum</a>
                     </ul>
                 </div>
                 <div class="tab-contents" id="education">
@@ -66,7 +68,7 @@
                         <li><span>2016 - 2017</span><br>Instituto Noroeste - High School</li>
                         <li><span>2018 - 2020</span><br>Lydia Helena Frandsen - High School</li>
                         <li><span>2022 - Current</span><br>UniSalesiano Graduation - Computer Engineer</li>
-                        <a href="#contact"  class="btn btn3">Download Curriculum</a>
+                        <a href="#contact" class="btn btn3">Download Curriculum</a>
                     </ul>
                 </div>
             </div>
@@ -76,22 +78,22 @@
 <!---------services----------->
 <div id="services">
     <div class="container">
-        <h1 class="sub-title">My Services</h1>
+        <h1 class="sub-title" id="services-title">My Services</h1>
         <div class="services-list">
             <div>
                 <i class="fa-solid fa-code"></i>
-                <h2>Back End</h2>
-                <p>Back-End Developer with in-depth knowledge of C/C++ and PL/SQL, currently expanding skills in Python, HTML, CSS and JavaScript.</p>
+                <h2 id="backend-service-title">Back End</h2>
+                <p id="backend-service-desc">Back-End Developer with in-depth knowledge of C/C++ and PL/SQL, currently expanding skills in Python, HTML, CSS and JavaScript.</p>
             </div>
             <div>
                 <i class="fa-solid fa-crop-simple"></i>
-                <h2>Design</h2>
-                <p>I also have proficiency in using design programs such as Photoshop, After Effects, Premiere, and Sony Vegas.</p>
+                <h2 id="design-service-title">Design</h2>
+                <p id="design-service-desc">I also have proficiency in using design programs such as Photoshop, After Effects, Premiere, and Sony Vegas.</p>
             </div>
             <div>
                 <i class="fa-solid fa-database"></i>
-                <h2>Database Expertise</h2>
-                <p>Proficient in PL/SQL, with a strong command of writing stored procedures, triggers, functions, and packages to enhance database functionality and performance. Experienced in leveraging PL/SQL for data manipulation, validation, and automation tasks, contributing to streamlined database operations and improved efficiency.</p>
+                <h2 id="database-service-title">Database Expertise</h2>
+                <p id="database-service-desc">Proficient in PL/SQL, with a strong command of writing stored procedures, triggers, functions, and packages to enhance database functionality and performance. Experienced in leveraging PL/SQL for data manipulation, validation, and automation tasks, contributing to streamlined database operations and improved efficiency.</p>
             </div>
         </div>
     </div>
@@ -99,30 +101,30 @@
 <!--- --------------portfolio-------- ------->
 <div id="portfolio">
     <div class="container">
-        <h1 class="sub-title">My Projects</h1>
+        <h1 class="sub-title" id="portfolio-title">My Projects</h1>
         <div class="work-list">
             <div class="work">
                 <img src="images/work-1.png">
                 <div class="layer">
-                    <h3>Photobatch (in progress)</h3>
-                    <p>This project aims to facilitate batch manipulation of files, offering features such as conversion between image formats (PNG to JPEG and vice versa), mass renaming with the possibility of adding sequential numbers, and flexible resizing of images.</p>
-                        <a href="https://github.com/Krydelmany/PhotoBatch"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <h3 id="project-1-title">Photobatch (in progress)</h3>
+                    <p id="project-1-desc">This project aims to facilitate batch manipulation of files, offering features such as conversion between image formats (PNG to JPEG and vice versa), mass renaming with the possibility of adding sequential numbers, and flexible resizing of images.</p>
+                    <a href="https://github.com/Krydelmany/PhotoBatch"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
             <div class="work">
                 <img src="images/work-2.png">
                 <div class="layer">
-                    <h3>Memory Simulator</h3>
-                    <p>Application that simulates main memory (RAM) for Cache memory, with its Cache Miss and Cache Hit in C# using Windows Form .NET.</p>
-                        <a href="https://github.com/Krydelmany/memory_simulator"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <h3 id="project-2-title">Memory Simulator</h3>
+                    <p id="project-2-desc">Application that simulates main memory (RAM) for Cache memory, with its Cache Miss and Cache Hit in C# using Windows Form .NET.</p>
+                    <a href="https://github.com/Krydelmany/memory_simulator"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
             <div class="work">
                 <img src="images/work-3.png">
                 <div class="layer">
-                    <h3>Shut down your PC whenever you want</h3>
-                    <p>A python project that allows you to schedule your computer to shut down at a specific time.</p>
-                        <a href="https://github.com/Krydelmany/turnoffpc-py"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <h3 id="project-3-title">Shut down your PC whenever you want</h3>
+                    <p id="project-3-desc">A python project that allows you to schedule your computer to shut down at a specific time.</p>
+                    <a href="https://github.com/Krydelmany/turnoffpc-py"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
         </div>
@@ -134,8 +136,8 @@
     <div class="container">
         <div class="row">
             <div class="contact-left">
-                <h1 class="sub-title">Contact Me</h1>
-                <p><i class="fa-solid fa-paper-plane"></i> giovanimoraesny@gmail.com</p>
+                <h1 class="sub-title" id="contact-title">Contact Me</h1>
+                <p id="contact-email"><i class="fa-solid fa-paper-plane"></i> giovanimoraesny@gmail.com</p>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/mrgiovanii/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="https://www.facebook.com/mrgiovanii/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -143,23 +145,32 @@
                 </div>
                 <a href="images/GiovaniClaroMoraes_Curriculo.pdf" download class="btn btn2">Download Curriculum</a>
             </div>
-            <div class="contact-right"></div>
+            <div class="contact-right">
                 <form>
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                     <button type="submit" class="btn btn2">Submit</button>
                 </form>
+            </div>
         </div>
     </div>
     <div class="copyright">
-        <p>Copyright  ⓒ  Giovani. Made with <i class="fa-solid fa-heart"></i></p>
+        <p id="footer-text">Copyright  ⓒ  Giovani. Made with <i class="fa-solid fa-heart"></i></p>
     </div>
 </div>
 <script>
     var tablinks = document.getElementsByClassName("tab-links");
     var tabcontents = document.getElementsByClassName("tab-contents");
-    
+    window.addEventListener('scroll', function() {
+    var sidemenu = document.getElementById('sidemenu');
+    if (window.scrollY > 50) { // Ajuste o valor conforme necessário para iniciar o efeito
+        sidemenu.classList.add('scroll-down');
+    } else {
+        sidemenu.classList.remove('scroll-down');
+    }
+});
+
     function opentab(tabname){
         for(tablink of tablinks){
             tablink.classList.remove("active-link");
@@ -170,9 +181,6 @@
         event.currentTarget.classList.add("active-link");
         document.getElementById(tabname).classList.add("active-tab");
     }
-</script>
-
-<script>
 
     var sidemenu = document.getElementById("sidemenu");
 
@@ -182,7 +190,110 @@
     function closemenu(){
         sidemenu.style.right = "-200px";
     }
-</script>
 
-</body>
-</html>
+    var isEnglish = true;
+
+    function toggleLanguage() {
+        const elements = document.querySelectorAll('#header-role, #header-intro, #about-title, #about-desc, #services-title, #backend-service-title, #backend-service-desc, #design-service-title, #design-service-desc, #database-service-title, #database-service-desc, #portfolio-title, #project-1-title, #project-1-desc, #project-2-title, #project-2-desc, #project-3-title, #project-3-desc, #contact-title, #footer-text, .tab-links, .tab-contents');
+
+
+        elements.forEach(el => {
+            el.classList.remove('fade-in');
+            el.classList.add('fade-out');
+        });
+
+        setTimeout(() => {
+            elements.forEach(el => {
+                if (isEnglish) {
+                    document.getElementById('header-role').textContent = 'Engenheiro de Computação';
+                    document.getElementById('header-intro').innerHTML = "Oi, eu sou <span>Giovani</span><br> de Birigui/SP";
+                    document.getElementById('about-title').textContent = 'Sobre Mim';
+                    document.getElementById('about-desc').textContent = 'Desenvolvedor Back-End com experiência em C/C++, atualmente expandindo habilidades em Python, HTML, CSS e JavaScript. Adquiri um ano de experiência em PL/SQL, aprofundando meu conhecimento em bancos de dados Oracle. Minha ânsia por aprender se estende a Java, Assembly e Engenharia Reversa. Apaixonado por Astronomia, Filmes e Séries de TV (especialmente sitcoms).';
+                    document.getElementById('services-title').textContent = 'Meus Serviços';
+                    document.getElementById('backend-service-title').textContent = 'Back End';
+                    document.getElementById('backend-service-desc').textContent = 'Desenvolvedor Back-End com profundo conhecimento em C/C++ e PL/SQL, atualmente expandindo habilidades em Python, HTML, CSS e JavaScript.';
+                    document.getElementById('design-service-title').textContent = 'Design';
+                    document.getElementById('design-service-desc').textContent = 'Também tenho proficiência no uso de programas de design como Photoshop, After Effects, Premiere e Sony Vegas.';
+                    document.getElementById('database-service-title').textContent = 'Especialização em Banco de Dados';
+                    document.getElementById('database-service-desc').textContent = 'Proficiente em PL/SQL, com forte domínio na escrita de procedimentos armazenados, triggers, funções e pacotes para melhorar a funcionalidade e desempenho do banco de dados. Experiência em utilizar PL/SQL para manipulação de dados, validação e tarefas de automação, contribuindo para operações de banco de dados mais eficientes.';
+                    document.getElementById('portfolio-title').textContent = 'Meus Projetos';
+                    document.getElementById('project-1-title').textContent = 'Photobatch (em progresso)';
+                    document.getElementById('project-1-desc').textContent = 'Este projeto visa facilitar a manipulação em lote de arquivos, oferecendo recursos como conversão entre formatos de imagem (PNG para JPEG e vice-versa), renomeação em massa com a possibilidade de adicionar números sequenciais e redimensionamento flexível de imagens.';
+                    document.getElementById('project-2-title').textContent = 'Simulador de Memória';
+                    document.getElementById('project-2-desc').textContent = 'Aplicativo que simula a memória principal (RAM) para a memória Cache, com seus Cache Miss e Cache Hit em C# usando Windows Form .NET.';
+                    document.getElementById('project-3-title').textContent = 'Desligue seu PC quando quiser';
+                    document.getElementById('project-3-desc').textContent = 'Um projeto em Python que permite agendar o desligamento do computador em um horário específico.';
+                    document.getElementById('contact-title').textContent = 'Me Contate';
+                    document.getElementById('footer-text').innerHTML = 'Copyright  ⓒ  Giovani. Feito com <i class="fa-solid fa-heart"></i>';
+                    document.querySelector('.lang-button').style.backgroundImage = "url('images/flag-br.png')";
+                    
+                    document.querySelectorAll('.btn').forEach(btn => {
+                    if (btn.textContent === 'Download Curriculum') {
+                        btn.textContent = 'Baixar Currículo';
+                    } else if (btn.textContent === 'Submit') {
+                        btn.textContent = 'Enviar';
+                    } else if (btn.textContent === 'See more on Github') {
+                        btn.textContent = 'Veja mais no Github';
+                    }
+                });
+                    
+                    document.querySelectorAll('.tab-links').forEach(link => {
+                    if (link.textContent === 'Skills') {
+                        link.textContent = 'Habilidades';
+                    } else if (link.textContent === 'Experience') {
+                        link.textContent = 'Experiência';
+                    } else if (link.textContent === 'Education') {
+                        link.textContent = 'Educação';
+                    }
+                });
+                } else {
+                    document.getElementById('header-role').textContent = 'Computer Engineer';
+                    document.getElementById('header-intro').innerHTML = "Hi, I'm <span>Giovani</span><br> From Birigui/SP";
+                    document.getElementById('about-title').textContent = 'About Me';
+                    document.getElementById('about-desc').textContent = 'Backend Developer with expertise in C/C++, currently expanding skills in Python, HTML, CSS, and JavaScript. I have acquired one year of experience in PL/SQL, deepening my knowledge in Oracle databases. My eagerness to learn extends to Java, Assembly, and Reverse Engineering. Passionate about Astronomy, Movies, and TV series (especially sitcoms).';
+                    document.getElementById('services-title').textContent = 'My Services';
+                    document.getElementById('backend-service-title').textContent = 'Back End';
+                    document.getElementById('backend-service-desc').textContent = 'Back-End Developer with in-depth knowledge of C/C++ and PL/SQL, currently expanding skills in Python, HTML, CSS and JavaScript.';
+                    document.getElementById('design-service-title').textContent = 'Design';
+                    document.getElementById('design-service-desc').textContent = 'I also have proficiency in using design programs such as Photoshop, After Effects, Premiere, and Sony Vegas.';
+                    document.getElementById('database-service-title').textContent = 'Database Expertise';
+                    document.getElementById('database-service-desc').textContent = 'Proficient in PL/SQL, with a strong command of writing stored procedures, triggers, functions, and packages to enhance database functionality and performance. Experienced in leveraging PL/SQL for data manipulation, validation, and automation tasks, contributing to streamlined database operations and improved efficiency.';
+                    document.getElementById('portfolio-title').textContent = 'My Projects';
+                    document.getElementById('project-1-title').textContent = 'Photobatch (in progress)';
+                    document.getElementById('project-1-desc').textContent = 'This project aims to facilitate batch manipulation of files, offering features such as conversion between image formats (PNG to JPEG and vice versa), mass renaming with the possibility of adding sequential numbers, and flexible resizing of images.';
+                    document.getElementById('project-2-title').textContent = 'Memory Simulator';
+                    document.getElementById('project-2-desc').textContent = 'Application that simulates main memory (RAM) for Cache memory, with its Cache Miss and Cache Hit in C# using Windows Form .NET.';
+                    document.getElementById('project-3-title').textContent = 'Shut down your PC whenever you want';
+                    document.getElementById('project-3-desc').textContent = 'A python project that allows you to schedule your computer to shut down at a specific time.';
+                    document.getElementById('contact-title').textContent = 'Contact Me';
+                    document.getElementById('footer-text').innerHTML = 'Copyright  ⓒ  Giovani. Made with <i class="fa-solid fa-heart"></i>';
+                    document.querySelector('.lang-button').style.backgroundImage = "url('images/flag-en.png')";
+
+                    document.querySelectorAll('.btn').forEach(btn => {
+                    if (btn.textContent === 'Baixar Currículo') {
+                        btn.textContent = 'Download Curriculum';
+                    } else if (btn.textContent === 'Enviar') {
+                        btn.textContent = 'Submit';
+                    } else if (btn.textContent === 'Veja mais no Github') {
+                        btn.textContent = 'See more on Github';
+                    }
+                    });
+
+                    document.querySelectorAll('.tab-links').forEach(link => {
+                    if (link.textContent === 'Habilidades') {
+                        link.textContent = 'Skills';
+                    } else if (link.textContent === 'Experiência') {
+                        link.textContent = 'Experience';
+                    } else if (link.textContent === 'Educação') {
+                        link.textContent = 'Education';
+                    }
+                });
+                }
+
+                el.classList.remove('fade-out');
+                el.classList.add('fade-in');
+            });
+            isEnglish = !isEnglish;
+        }, 500);
+    }
+</script>

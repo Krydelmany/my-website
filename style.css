@@ -23,13 +23,21 @@ body{
     cursor: default;
 }
 .container{
-    padding: 10px 10% ;
+    padding: 100px 10% ;
 }
-nav{
+nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    background-color: rgba(24, 24, 24, 0.6);
+    padding: 5px 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0; /* Opcional: pode querer remover o border-radius para navs fixos */
+    backdrop-filter: blur(20px);
+    z-index: 1000;
 }
 .logo{
     width: 140px;
@@ -43,7 +51,7 @@ nav ul li{
 nav ul li a{
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
     position: relative;
 }
 nav ul li a::after{
@@ -133,6 +141,38 @@ nav ul li a:hover::after{
 }
 .tab-contents.active-tab{
     display: block;
+}
+
+
+.lang-button {
+    position: absolute;
+    top: 49%; /* Ajusta a posição verticalmente para o centro do nav */
+    transform: translateY(-50%); /* Corrige para alinhar o centro do botão ao centro do nav */
+    right: 20px; /* Ajusta a posição horizontalmente, por exemplo, 20px do lado direito */
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url('images/flag-en.png'); /* Caminho de exemplo */
+}
+
+
+/* style.css */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 /*------------------services--------------------*/
@@ -329,6 +369,12 @@ nav .fas{
 @media only screen and (max-width: 600px){
     #header{
         background-image: url(images/background-mobile.jpg);
+    }
+    .lang-button {
+        top: auto; /* Remove o posicionamento top absoluto */
+
+
+        right: 150px; /* Ajusta a posição horizontalmente para mais perto do canto */
     }
     .header-text{
         margin-top: 160%;
