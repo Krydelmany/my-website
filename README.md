@@ -1,7 +1,7 @@
 # Giovani
 
 Personal portfolio, built one section at a time. The current stage contains the
-opening, the first screen, the Serviços / Manifesto section,
+multilingual opening, the first screen, the Serviços / Manifesto section,
 and an editorial project list with a dedicated Nexus case study.
 
 ## Run
@@ -32,7 +32,7 @@ the WhatsApp CTA, project previews, route history/focus, and optional case media
   staggered letter reveals, variable font weights, and small magnetic interactions.
 - Inter and Inter Tight are self-hosted through Fontsource. No font CDN is needed.
 - Lenis handles scrolling across the site and is stopped during the intro/replay.
-- Opening timing lives in `src/components/Opening.tsx`; the visual system and
+- Greetings and timing live in `src/components/Opening.tsx`; the visual system and
   responsive rules are in `src/index.css`.
 - The opening can be skipped with the visible button or Escape, and replayed from
   the footer. Replaying re-locks scrolling (Lenis stop plus body lock), returns

@@ -6,19 +6,19 @@ async function waitForReady(page: Page) {
   await expect(page.locator(opening)).toHaveAttribute('data-ready', 'true', { timeout: 7_000 })
 }
 
-async function expectIntroToPlay(page: Page) {
-  const descent = () => page.locator('.intro-curtain').evaluate(
-    (element) => new DOMMatrix(getComputedStyle(element).transform).m42,
-  )
-  const first = await descent()
-  await expect.poll(descent).not.toBe(first)
+async function expectGreetingToAnimate(page: Page) {
+  const greeting = page.locator('[data-greeting="0"]')
+  await expect(async () => {
+    await expect(greeting).toBeVisible()
+    expect(await greeting.evaluate((element) => Number.parseFloat(getComputedStyle(element).opacity))).toBeGreaterThan(0.05)
+  }).toPass()
 }
 
-test('plays the curtain reveal and naturally exposes the complete hero', async ({ page }) => {
+test('plays a visible greeting and naturally reveals the complete hero', async ({ page }) => {
   await page.goto('/')
 
   await expect(page.locator(opening)).toHaveAttribute('data-ready', 'false')
-  await expectIntroToPlay(page)
+  await expectGreetingToAnimate(page)
   await waitForReady(page)
 
   await expect(page.getByRole('heading', { name: 'Giovani' })).toBeVisible()
@@ -48,7 +48,9 @@ test('Escape exits the opening before it completes', async ({ page }) => {
   await expect(page.locator('.intro')).toBeHidden()
 })
 
+// The eight-greeting intro needs a larger budget: initial load plus two full replays.
 test('replay returns to the intro and can complete repeatedly without page errors', async ({ page }) => {
+  test.slow()
   const errors: string[] = []
   page.on('pageerror', (error) => errors.push(error.message))
   page.on('console', (message) => {
@@ -60,7 +62,7 @@ test('replay returns to the intro and can complete repeatedly without page error
   for (let replay = 0; replay < 2; replay += 1) {
     await page.getByRole('button', { name: /rever abertura/i }).click()
     await expect(page.locator(opening)).toHaveAttribute('data-ready', 'false')
-    await expectIntroToPlay(page)
+    await expectGreetingToAnimate(page)
     await waitForReady(page)
   }
 
@@ -79,7 +81,7 @@ test('reduced motion bypasses the intro and exposes settled content', async ({ p
 
 test('changing reduced motion interrupts playback and allows a clean replay', async ({ page }) => {
   await page.goto('/')
-  await expectIntroToPlay(page)
+  await expectGreetingToAnimate(page)
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await waitForReady(page)
   await expect(page.locator('.hero')).not.toHaveAttribute('inert', '')
@@ -90,7 +92,7 @@ test('changing reduced motion interrupts playback and allows a clean replay', as
   await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))))
   await expect.poll(() => page.evaluate(() => document.getAnimations().filter((animation) => animation.playState === 'running').length)).toBe(0)
   await page.getByRole('button', { name: /rever abertura/i }).click()
-  await expectIntroToPlay(page)
+  await expectGreetingToAnimate(page)
   await waitForReady(page)
 })
 
@@ -101,9 +103,9 @@ test('an interrupted replay resets the curtain and intro details on the next run
 
   for (let replay = 0; replay < 2; replay += 1) {
     await page.getByRole('button', { name: /rever abertura/i }).click()
-    await expect(page.locator('.intro')).toBeVisible()
-    await expect(page.locator('.intro-skip')).toBeVisible()
-    await expectIntroToPlay(page)
+    await expectGreetingToAnimate(page)
+    await expect(page.locator('.intro-skip')).toHaveCSS('opacity', '1')
+    await expect(page.locator('.intro-curtain')).toHaveCSS('transform', 'none')
     if (replay === 1) {
       await expect.poll(() => page.locator('.intro-curtain').evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).m42)).toBeGreaterThan(40)
       await page.keyboard.press('Escape')
@@ -286,7 +288,7 @@ test('replay re-locks scroll and interaction until it finishes', async ({ page }
 
 test('enabling reduced motion mid-play settles the whole site', async ({ page }) => {
   await page.goto('/')
-  await expectIntroToPlay(page)
+  await expectGreetingToAnimate(page)
 
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await waitForReady(page)

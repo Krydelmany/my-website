@@ -10,6 +10,17 @@ import {
 import { useLenis } from 'lenis/react'
 import { Globe } from './Globe'
 
+const greetings = [
+  { word: '你好', language: '中文', lang: 'zh-CN', duration: 0.5 },
+  { word: 'Hello', language: 'English', lang: 'en', duration: 0.34 },
+  { word: 'Bonjour', language: 'Fran\u00e7ais', lang: 'fr', duration: 0.34 },
+  { word: 'Ciao', language: 'Italiano', lang: 'it', duration: 0.32 },
+  { word: 'こんにちは', language: '日本語', lang: 'ja', duration: 0.36 },
+  { word: 'Hola', language: 'Espa\u00f1ol', lang: 'es', duration: 0.32 },
+  { word: 'Привет', language: 'Русский', lang: 'ru', duration: 0.36 },
+  { word: 'Ol\u00e1', language: 'Sinta-se em casa', lang: 'pt-BR', duration: 0.62 },
+]
+
 const ease = [0.22, 1, 0.36, 1] as const
 const letters = 'Giovani'.split('')
 
@@ -328,10 +339,19 @@ export function Opening({ initialReady = false }: { initialReady?: boolean }) {
         if (cancelled || skipped.current) return
 
         const sequence: AnimationSequence = []
-        const time = 0
+        let time = 0
+
+        greetings.forEach((greeting, index) => {
+          sequence.push([
+            `[data-greeting="${index}"]`,
+            { opacity: [0, 1, 1, 0], y: [14, 0, 0, -14] },
+            { at: time, duration: greeting.duration, times: [0, 0.18, 0.78, 1], ease: 'easeInOut' },
+          ])
+          time += greeting.duration - 0.035
+        })
 
         sequence.push(
-          ['.intro-detail', { opacity: [1, 0], y: [0, -10] }, { at: time, duration: 0.24 }],
+          ['.intro-detail', { opacity: [1, 0], y: [0, -10] }, { at: time - 0.12, duration: 0.24 }],
           ['.intro-curtain', { y: ['0%', '125%'] }, { at: time, duration: 1.18, ease: [0.76, 0, 0.24, 1] }],
           ['.intro-curve path', {
             d: [
@@ -410,6 +430,14 @@ export function Opening({ initialReady = false }: { initialReady?: boolean }) {
             <svg className="intro-curve" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path d="M 0 100 Q 50 100 100 100 L 100 100 L 0 100 Z" />
             </svg>
+          </div>
+          <div className="greetings">
+            {greetings.map((greeting, index) => (
+              <div className={`greeting${index % 2 ? ' greeting-italic' : ''}`} data-greeting={index} key={index} lang={greeting.lang}>
+                <span className="greeting-word"><i />{greeting.word}</span>
+                <span className="greeting-language">{greeting.language}</span>
+              </div>
+            ))}
           </div>
         </div>
         <span className="sr-only" role="status">Abrindo o portf&oacute;lio de Giovani.</span>
